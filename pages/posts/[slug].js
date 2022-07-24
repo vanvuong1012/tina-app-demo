@@ -22,7 +22,7 @@ const query = `query getPost($relativePath: String!) {
     author
     category
     tags
-    descripstion
+    description
     body
   }
 }
