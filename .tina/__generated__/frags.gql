@@ -1,0 +1,44 @@
+fragment PageParts on Page {
+  blocks {
+    __typename
+    ... on PageBlocksHero {
+      heading
+      subheading
+      decscription
+      image
+    }
+    ... on PageBlocksProjects {
+      heading
+      subheading
+      items {
+        __typename
+        image
+        name
+        decscription
+        href
+      }
+    }
+    ... on PageBlocksFeatures {
+      items {
+        __typename
+        image
+        title
+        author
+        category
+        decscription
+        href
+      }
+    }
+  }
+}
+
+fragment PostParts on Post {
+  title
+  date
+  image
+  author
+  category
+  tags
+  description
+  body
+}

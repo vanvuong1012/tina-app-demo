@@ -1,0 +1,102 @@
+import { staticRequest } from "tinacms";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { Layout } from "../components/Layout/Layout";
+import { Hero } from "../components/Home/Hero";
+import { useTina } from "tinacms/dist/edit-state";
+import { Fragment } from "react";
+import { Projects } from "../components/Home/Project";
+import { FeaturedArticles } from "../components/Home/FeaturedArticles";
+
+
+const query = `{
+  page(relativePath:"home.mdx"){id
+    blocks{
+     __typename
+     ... on PageBlocksHero{
+       heading
+       subheading
+       decscription
+       image
+     }
+     ... on PageBlocksProjects{
+      heading,
+      subheading,
+      items{
+        image
+        name
+        decscription
+        href
+      } 
+     }
+     ... on PageBlocksFeatures{
+      items{
+        image
+        title
+        author
+        category
+        decscription
+        href
+      }
+     }
+   }
+  }
+}`;
+
+export default function Home(props) {
+  // data passes though in production mode and data is updated to the sidebar data in edit-mode
+  const { data } = useTina({
+    query,
+    variables: {},
+    data: props.data,
+  });
+
+  return (
+    <Layout>
+      {data && data.page.blocks
+        ? data.page.blocks.map(function (block, i) {
+          switch (block.__typename) {
+            case "PageBlocksHero":
+              return (
+                <Fragment key={i + block.__typename}>
+                  <Hero data={block}/>
+                </Fragment>
+
+              );
+            case "PageBlocksProjects":
+              return (
+                <Fragment key={i + block.__typename}>
+                  <Projects data={block}/>
+                </Fragment>
+              );
+              case "PageBlocksFeatures":
+              return (
+                <Fragment key={i + block.__typename}>
+                   <FeaturedArticles data={block}/>
+                </Fragment>
+              );
+          }
+        }) : null}
+    </Layout>
+  );
+}
+
+
+export const getStaticProps = async () => {
+  const variables = {};
+  let data = {};
+  try {
+    data = await staticRequest({
+      query,
+      variables,
+    });
+  } catch {
+    // swallow errors related to document creation
+  }
+
+  return {
+    props: {
+      data,
+      //myOtherProp: 'some-other-data',
+    },
+  };
+};
