@@ -15,7 +15,6 @@ const query = `{
      ... on PageBlocksHero{
        heading
        subheading
-       decscription
        image
      }
      ... on PageBlocksProjects{

@@ -10,13 +10,7 @@ const DesktopNavLink = (props) => {
       justifyContent="center"
       transition=".3s"
       pos="relative"
-      _hover={{
-        textDecoration: "none",
-        color: "RGB(113, 90, 255)",
-        _after: {
-          w: "100%",
-        },
-      }}
+    
       _after={{
         content: "''",
         height: "2px",

@@ -15,19 +15,31 @@ import {
   
   const links = [
     {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Blog",
-      href: "/post",
-    },
-    {
-      label: "Link 3",
+      label: "MEET OUR TEAM",
       href: "#",
     },
     {
-      label: "Link 4",
+      label: "DENTAL IMPLANTS",
+      href: "#",
+    },
+    {
+      label: "WISDOM TEETH SURGERY",
+      href: "#",
+    },
+    {
+      label: "ALL SERVICE",
+      href: "#",
+    },
+    {
+      label: "PATIENTS",
+      href: "#",
+    },
+    {
+      label: "REFERING DOCTORS",
+      href: "#",
+    },
+    {
+      label: "CONTACT",
       href: "#",
     },
   ];

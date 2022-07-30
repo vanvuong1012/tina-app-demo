@@ -16,14 +16,7 @@ const heroBlock: TinaTemplate = {
       label: "Sub Heading",
       name: "subheading"
     },
-    {
-      type: "string",
-      label: "Decscription",
-      name: "decscription",
-      ui: {
-        component: "textarea",
-      },
-    },
+    
     {
       type: "image",
       name: "image",

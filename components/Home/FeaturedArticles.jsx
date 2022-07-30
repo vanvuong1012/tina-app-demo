@@ -116,7 +116,7 @@ export const FeaturedArticles = ({ data }) => {
           })}
         </SimpleGrid>
         <Link
-          href="/post"
+          href="/posts/HelloWorld"
           fontSize="xl"
           fontWeight="bold"
           color={mode("purple.600", "purple.400")}

@@ -11,34 +11,35 @@ import {
 import Image from "next/image";
 
 export const Hero = ({ data }) => {
-    const { heading, subheading, decscription, image } = data;
+    const { heading, subheading, image } = data;
     const CoverImg = chakra(Image, {
         shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop)
     })
     return (
         <Box
             as="section"
-            bg={mode("white", "gray.800")}
+            bg={mode("gray.50", "gray.500")}
             pt={{ base: "0", md: "2", lg: "16" }}
             pb="24"
         >
             <Box
-                maxW={{ base: "xl", md: "7xl" }}
+                height="40vh"
+                maxW={{ base: "3xl", md: "7xl" }}
                 mx="auto"
                 px={{ base: "6", md: "8" }}
             >
                 <Stack
                     direction={{ base: "column", lg: "row" }}
-                    spacing={{ base: "3rem", lg: "2rem" }}
+                    spacing={{ base: "2rem", lg: "2rem" }}
                     mt="8"
                     align={{ lg: "center" }}
                     justify="space-between"
                 >
-                    <Box flex="1" maxW={{ lg: "520px" }}>
+                    <Box flex="1" maxW={{ lg: "820px" }}>
                         <Heading
                             as="h1"
                             size="3xl"
-                            color={mode("purple.600", "purple.300")}
+                            color={mode("blue.600", "blue.300")}
                             mt={8}
                             fontWeight="extrabold"
                             letterSpacing="tight"
@@ -46,32 +47,29 @@ export const Hero = ({ data }) => {
                             {heading}
                         </Heading>
                         <Text
+                            maxW={{ lg: "560px" }}
                             color={mode("gray.600", "gray.400")}
-                            fontSize="sm"
+                            pt="36px"
+                            fontSize="2xl"
                             fontWeight="light"
                         >
                             {subheading}
                         </Text>
-                        <Text
-                            color={mode("gray.600", "gray.400")}
-                            fontSize="lg"
-                            fontWeight="medium"
-                            mt={4}
-                        >
-                            {decscription}
-                        </Text>
+                        
                     </Box>
                     <Box
-                        pos="relative"
+                        pos="absolute"
+                        right="100px"
+                        top="180px"
                         w={{ base: "full", md: "560px", lg: "560px" }}
-                        h={{ base: "auto", md: "360px", lg: "360px" }}
+                        h={{ base: "full", md: "360px", lg: "360px" }}
                     >
                         <Box>
                             {image && (
                                 <CoverImg
                                     zIndex={1}
                                     width="560px"
-                                    height="360px"
+                                    height="560px"
                                     quality={80}
                                     pos="relative"
                                     objectFit="cover"
@@ -80,15 +78,7 @@ export const Hero = ({ data }) => {
                                 />
                             )}
                         </Box>
-                        <Box
-                            pos="absolute"
-                            w="100%"
-                            h="100%"
-                            top="-4"
-                            left="-4"
-                            bg={mode("gray.200", "gray.700")}
-                        >
-                        </Box>
+                        
                     </Box>
                 </Stack>
             </Box>

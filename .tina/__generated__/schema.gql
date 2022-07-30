@@ -82,7 +82,6 @@ union DocumentNode = Page | Post
 type PageBlocksHero {
   heading: String
   subheading: String
-  decscription: String
   image: String
 }
 
@@ -176,7 +175,6 @@ input DocumentMutation {
 input PageBlocksHeroMutation {
   heading: String
   subheading: String
-  decscription: String
   image: String
 }
 

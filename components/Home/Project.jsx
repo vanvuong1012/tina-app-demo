@@ -1,6 +1,7 @@
 import {
     Box,
     Flex,
+    Stack,
     Img,
     Heading,
     Text,
@@ -13,41 +14,46 @@ export const Projects = ({ data }) => {
     return (
         <Box
             as="section"
-            bg={mode("gray.200", "gray.400")}
-            py={{
-                base: "10",
-                sm: "10",
-            }}
+            bg={mode("white", "gray.500")}
+            pt={{ base: "0", md: "2", lg: "16" }}
+            pb="24"
         >
             <Box
-                maxW={{
-                    base: "xl",
-                    md: "7xl",
-                }}
+                height="40vh"
+                maxW={{ base: "3xl", md: "7xl" }}
                 mx="auto"
+                px={{ base: "6", md: "8" }}
             >
-                <Box flex="1" maxW={{ lg: "5xl" }} mb={12} mx="auto">
-                    <Heading
-                        as="h1"
-                        size="xl"
-                        color={mode("purple.600", "purple.700")}
-                        mt="8"
-                        textAlign="center"
-                        fontWeight="extrabold"
-                    >
-                        {data.heading}
-                    </Heading>
-                    <Text
-                        textAlign="center"
-                        color={mode("gray.600", "gray.900")}
-                        mt="4"
-                        fontSize="lg"
-                        fontWeight="medium"
-                    >
-                        {data.subheading}
-                    </Text>
-                </Box>
-                <SimpleGrid spacing="14" columns={{ base: 1, lg: 3 }} mx="4">
+                <Stack
+                    direction={{ base: "column", lg: "row" }}
+                    spacing={{ base: "2rem", lg: "2rem" }}
+                    mt="8"
+                    align={{ lg: "center" }}
+                    justify="space-between">
+                    <Box flex="1" maxW={{ lg: "5xl" }} >
+                        <Heading
+                            as="h1"
+                            size="2xl"
+                            color={mode("blackAlpha.800", "purple.700")}
+                            mt="8"
+                            textAlign="left"
+                            fontWeight="extrabold"
+                        >
+                            {data.heading}
+                        </Heading>
+                        <Text
+                            textAlign="left"
+                            color={mode("gray.600", "gray.900")}
+                            pt="36px"
+                            mt="4"
+                            fontSize="lg"
+                            fontWeight="medium"
+                        >
+                            {data.subheading}
+                        </Text>
+                    </Box>
+                </Stack>
+                <SimpleGrid spacing="14" columns={{ base: 1, lg: 3 }} mx="4" pt="36px">
                     {data.items?.map((item) => {
                         return (
                             <Link

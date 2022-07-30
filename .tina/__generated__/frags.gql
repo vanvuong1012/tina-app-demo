@@ -4,7 +4,6 @@ fragment PageParts on Page {
     ... on PageBlocksHero {
       heading
       subheading
-      decscription
       image
     }
     ... on PageBlocksProjects {
