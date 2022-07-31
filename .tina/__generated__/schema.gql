@@ -99,19 +99,35 @@ type PageBlocksProjects {
 }
 
 type PageBlocksFeaturesItems {
-  image: String
   title: String
-  author: String
-  category: String
-  decscription: String
+  link: String
   href: String
 }
 
 type PageBlocksFeatures {
+  heading: String
+  subheading: String
   items: [PageBlocksFeaturesItems]
 }
 
-union PageBlocks = PageBlocksHero | PageBlocksProjects | PageBlocksFeatures
+type PageBlocksFinancialItems {
+  content: String
+}
+
+type PageBlocksFinancial {
+  heading: String
+  items: [PageBlocksFinancialItems]
+}
+
+type PageBlocksContact {
+  heading: String
+}
+
+type PageBlocksFooter {
+  content: String
+}
+
+union PageBlocks = PageBlocksHero | PageBlocksProjects | PageBlocksFeatures | PageBlocksFinancial | PageBlocksContact | PageBlocksFooter
 
 type Page implements Node & Document {
   blocks: [PageBlocks]
@@ -192,22 +208,41 @@ input PageBlocksProjectsMutation {
 }
 
 input PageBlocksFeaturesItemsMutation {
-  image: String
   title: String
-  author: String
-  category: String
-  decscription: String
+  link: String
   href: String
 }
 
 input PageBlocksFeaturesMutation {
+  heading: String
+  subheading: String
   items: [PageBlocksFeaturesItemsMutation]
+}
+
+input PageBlocksFinancialItemsMutation {
+  content: String
+}
+
+input PageBlocksFinancialMutation {
+  heading: String
+  items: [PageBlocksFinancialItemsMutation]
+}
+
+input PageBlocksContactMutation {
+  heading: String
+}
+
+input PageBlocksFooterMutation {
+  content: String
 }
 
 input PageBlocksMutation {
   hero: PageBlocksHeroMutation
   projects: PageBlocksProjectsMutation
   features: PageBlocksFeaturesMutation
+  financial: PageBlocksFinancialMutation
+  contact: PageBlocksContactMutation
+  footer: PageBlocksFooterMutation
 }
 
 input PageMutation {

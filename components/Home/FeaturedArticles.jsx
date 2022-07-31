@@ -22,7 +22,7 @@ export const FeaturedArticles = ({ data }) => {
   return (
     <Box
       as="section"
-      bg={mode("white", "gray.800")}
+      bg={mode("gray.50", "gray.500")}
       py={{
         base: "10",
         sm: "10",
@@ -39,9 +39,28 @@ export const FeaturedArticles = ({ data }) => {
           md: "8",
         }}
       >
-        <Heading color="purple.500" size="xl" mb="8" fontWeight="extrabold">
-          Featured Articles
-        </Heading>
+        <Box flex="1" maxW={{ lg: "7xl" }} mb={9} mx="auto">
+          <Heading
+            as="h1"
+            size="2xl"
+            color={mode("blackAlpha.800", "purple.700")}
+            mt="8"
+            textAlign="left"
+            fontWeight="extrabold"
+          >
+            {data.heading}
+          </Heading>
+          <Text
+            textAlign="left"
+            color={mode("gray.600", "gray.900")}
+            pt="36px"
+            mt="4"
+            fontSize="lg"
+            fontWeight="medium"
+          >
+            {data.subheading}
+          </Text>
+        </Box>
 
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="12" mb="10">
           {data.items?.map((feature) => {
@@ -52,51 +71,32 @@ export const FeaturedArticles = ({ data }) => {
                 key={feature.href}
                 style={{ textDecoration: "inherit" }}
               >
-                <LinkBox
+                <Box
                   as="article"
                   bg={{ sm: mode("white", "gray.700") }}
                   shadow={{ sm: "base" }}
                   rounded={{ sm: "md" }}
                   overflow="hidden"
                   transition="all 0.2s"
-                  _hover={{
-                    shadow: {
-                      sm: "lg",
-                      lg: "dark-lg",
-                    },
-                  }}
                 >
-                  <Flex direction="column">{feature?.image && (
-                    <FeaturedImage
-                      height="200"
-                      width="250"
-                      quality={100}
-                      objectFit="fit"
-                      alt={feature?.title}
-                      src={feature.image}
-                    />
-                  )}
-                   <Flex direction="column" px={{ sm: 6 }} py="5">
-                   <Text
+                  <Flex direction="column">
+                    <Flex direction="column" px={{ sm: 6 }} py="5">
+                      <Heading as="h2" size="md" mb="3" lineHeight="base" textAlign="center">
+                        {feature?.title}
+                      </Heading >
+                        <hr  width="100%" align="center" />
+                      <Text
+                        pt="20px"
                         casing="uppercase"
                         letterSpacing="wider"
-                        fontSize="xs"
-                        color={mode("gray.800", "gray.400")}
+                        fontSize="lg"
+                        color={mode("blue.400", "gray.400")}
                         fontWeight="semibold"
                         mb="2"
-                        textDecoration="none"
+                        textDecoration="block"
+                        
                       >
-                        {feature?.category}
-                      </Text>
-                      <Heading as="h3" size="sm" mb="2" lineHeight="base">
-                        {feature?.title}
-                      </Heading>
-                      <Text
-                        noOfLines={2}
-                        mb="8"
-                        color={mode("gray.600", "gray.400")}
-                      >
-                        {feature?.description}
+                        {feature?.link}
                       </Text>
                       <Flex
                         align="baseline"
@@ -104,26 +104,16 @@ export const FeaturedArticles = ({ data }) => {
                         fontSize="sm"
                         color={mode("gray.600", "gray.400")}
                       >
-                        <Text>
-                          By {feature?.author}
-                        </Text>
+                        
                       </Flex>
-                   </Flex>
+                    </Flex>
                   </Flex>
-                </LinkBox>
+                </Box>
               </Link>
             );
           })}
         </SimpleGrid>
-        <Link
-          href="/posts/HelloWorld"
-          fontSize="xl"
-          fontWeight="bold"
-          color={mode("purple.600", "purple.400")}
-        >
-          <span>View all articles</span>
-          <Box as={ArrowForwardIcon} display="inline-block" ms="2" />
-        </Link>
+       
       </Box>
     </Box>
   );

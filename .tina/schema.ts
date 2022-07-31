@@ -78,39 +78,36 @@ const featureSection: TinaTemplate = {
   label: "Featured Articles",
   fields: [
     {
+      type: "string",
+      label: "Heading",
+      name: "heading"
+    },
+    {
+      type: "string",
+      label: "Sub Heading",
+      name: "subheading",
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
       type: "object",
-      label: "Featured Items",
+      label: "Patient Instructions Items",
       name: "items",
       list: true,
       fields: [
         {
-          name: "image",
-          label: "Featured Image",
-          type: "image",
-        },
-        {
           name: "title",
-          label: "Featured Title",
+          label: "Patient Instructions Title",
           type: "string",
         },
+        
         {
-          name: "author",
-          label: "Featured Author",
+          name: "link",
+          label: "Patient Instructions Link",
           type: "string",
         },
-        {
-          name: "category",
-          label: "Featured Category",
-          type: "string",
-        },
-        {
-          type: "string",
-          label: "Decscription",
-          name: "decscription",
-          ui: {
-            component: "textarea",
-          },
-        },
+       
         {
           name: "href",
           label: "Link URL",
@@ -119,6 +116,58 @@ const featureSection: TinaTemplate = {
       ]
     }
   ]
+}
+
+const financialBlock: TinaTemplate = {
+  name: "financial",
+  label: "Financial Block",
+  fields: [
+    {
+      type: "string",
+      label: "Heading",
+      name: "heading"
+    },
+    {
+      type: "object",
+      label: "Content Items",
+      name: "items",
+      list: true,
+      fields: [
+        {
+          type: "string",
+          label: "Content",
+          name: "content",
+          ui: {
+            component: "textarea",
+          },
+        },
+      ]
+    },
+  ],
+};
+
+const contactBlock: TinaTemplate = {
+  name: "contact",
+  label: "Contact Block",
+  fields: [
+    {
+      type: "string",
+      label: "Heading",
+      name: "heading"
+    },
+  ],
+}
+
+const footerBlock: TinaTemplate = {
+  name: "footer",
+  label: "Footer Block",
+  fields: [
+    {
+      type: "string",
+      label: "Content",
+      name: "content"
+    },
+  ],
 }
 
 const schema = defineSchema({
@@ -142,7 +191,7 @@ const schema = defineSchema({
           list: true,
           name: "blocks",
           label: "Section",
-          templates: [heroBlock, projectSection, featureSection],
+          templates: [heroBlock, projectSection, featureSection, financialBlock, contactBlock, footerBlock],
         },
       ],
     },

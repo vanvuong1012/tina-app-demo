@@ -6,6 +6,9 @@ import { useTina } from "tinacms/dist/edit-state";
 import { Fragment } from "react";
 import { Projects } from "../components/Home/Project";
 import { FeaturedArticles } from "../components/Home/FeaturedArticles";
+import { FinancialAndInsuarance } from "../components/Home/FinancialAndInsuarance";
+import { ContactUs } from "../components/Home/ContactUs";
+import { Footer } from "../components/Home/Footer";
 
 
 const query = `{
@@ -28,15 +31,26 @@ const query = `{
       } 
      }
      ... on PageBlocksFeatures{
-      items{
-        image
-        title
-        author
-        category
-        decscription
+      heading,
+      subheading,
+      items{   
+        title  
+        link
         href
       }
      }
+     ... on PageBlocksFinancial{
+      heading
+      items{
+        content
+      }
+    }
+    ... on PageBlocksContact{
+      heading
+    }
+    ... on PageBlocksFooter{
+      content
+    }
    }
   }
 }`;
@@ -71,6 +85,24 @@ export default function Home(props) {
               return (
                 <Fragment key={i + block.__typename}>
                    <FeaturedArticles data={block}/>
+                </Fragment>
+              );
+              case "PageBlocksFinancial":
+              return (
+                <Fragment key={i + block.__typename}>
+                   <FinancialAndInsuarance data={block}/>
+                </Fragment>
+              );
+              case "PageBlocksContact":
+              return (
+                <Fragment key={i + block.__typename}>
+                   <ContactUs data={block}/>
+                </Fragment>
+              );
+              case "PageBlocksFooter":
+              return (
+                <Fragment key={i + block.__typename}>
+                   <Footer data={block}/>
                 </Fragment>
               );
           }

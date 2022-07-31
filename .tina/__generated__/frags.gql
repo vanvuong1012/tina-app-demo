@@ -18,15 +18,27 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksFeatures {
+      heading
+      subheading
       items {
         __typename
-        image
         title
-        author
-        category
-        decscription
+        link
         href
       }
+    }
+    ... on PageBlocksFinancial {
+      heading
+      items {
+        __typename
+        content
+      }
+    }
+    ... on PageBlocksContact {
+      heading
+    }
+    ... on PageBlocksFooter {
+      content
     }
   }
 }

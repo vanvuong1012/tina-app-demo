@@ -23,7 +23,7 @@ export const Hero = ({ data }) => {
             pb="24"
         >
             <Box
-                height="40vh"
+                height="45vh"
                 maxW={{ base: "3xl", md: "7xl" }}
                 mx="auto"
                 px={{ base: "6", md: "8" }}
@@ -60,7 +60,7 @@ export const Hero = ({ data }) => {
                     <Box
                         pos="absolute"
                         right="100px"
-                        top="180px"
+                        top="200px"
                         w={{ base: "full", md: "560px", lg: "560px" }}
                         h={{ base: "full", md: "360px", lg: "360px" }}
                     >
