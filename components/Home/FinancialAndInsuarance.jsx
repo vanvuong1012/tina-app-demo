@@ -46,7 +46,7 @@ export const FinancialAndInsuarance = ({ data }) => {
                         >
                             {heading}
                         </Heading>
-                        <SimpleGrid spacing="14" columns={{ base: 1, lg: 1 }} pt="36px" pb="72px">
+                        <SimpleGrid spacing="14" columns={{ base: 1, lg: 1 }} pt="36px" >
                             {data.items?.map((item) => {
                                 return (
 

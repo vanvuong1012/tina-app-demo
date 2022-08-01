@@ -37,6 +37,18 @@ fragment PageParts on Page {
     ... on PageBlocksContact {
       heading
     }
+    ... on PageBlocksInformation {
+      image
+      subheading
+      items {
+        __typename
+        image
+        name
+        decscription
+        href
+      }
+      mapimage
+    }
     ... on PageBlocksFooter {
       content
     }
@@ -45,11 +57,6 @@ fragment PageParts on Page {
 
 fragment PostParts on Post {
   title
-  date
   image
-  author
-  category
-  tags
   description
-  body
 }

@@ -19,14 +19,16 @@ export const Hero = ({ data }) => {
         <Box
             as="section"
             bg={mode("gray.50", "gray.500")}
-            pt={{ base: "0", md: "2", lg: "16" }}
-            pb="24"
+            py={{
+                base: "10",
+                sm: "10",
+            }}
         >
             <Box
                 height="45vh"
                 maxW={{ base: "3xl", md: "7xl" }}
                 mx="auto"
-                px={{ base: "6", md: "8" }}
+               
             >
                 <Stack
                     direction={{ base: "column", lg: "row" }}
@@ -58,9 +60,8 @@ export const Hero = ({ data }) => {
                         
                     </Box>
                     <Box
-                        pos="absolute"
-                        right="100px"
-                        top="200px"
+                        pos="relative"
+                       
                         w={{ base: "full", md: "560px", lg: "560px" }}
                         h={{ base: "full", md: "360px", lg: "360px" }}
                     >

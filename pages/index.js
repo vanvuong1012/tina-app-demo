@@ -9,6 +9,7 @@ import { FeaturedArticles } from "../components/Home/FeaturedArticles";
 import { FinancialAndInsuarance } from "../components/Home/FinancialAndInsuarance";
 import { ContactUs } from "../components/Home/ContactUs";
 import { Footer } from "../components/Home/Footer";
+import { Information } from "../components/Home/Information";
 
 
 const query = `{
@@ -47,6 +48,16 @@ const query = `{
     }
     ... on PageBlocksContact{
       heading
+    }
+    ... on PageBlocksInformation{
+       image
+       subheading
+       items{
+        image
+        name
+        decscription
+        href
+      }
     }
     ... on PageBlocksFooter{
       content
@@ -99,6 +110,12 @@ export default function Home(props) {
                    <ContactUs data={block}/>
                 </Fragment>
               );
+              case "PageBlocksInformation":
+                return (
+                  <Fragment key={i + block.__typename}>
+                     <Information data={block}/>
+                  </Fragment>
+                );
               case "PageBlocksFooter":
               return (
                 <Fragment key={i + block.__typename}>

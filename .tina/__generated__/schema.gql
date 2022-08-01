@@ -123,11 +123,25 @@ type PageBlocksContact {
   heading: String
 }
 
+type PageBlocksInformationItems {
+  image: String
+  name: String
+  decscription: String
+  href: String
+}
+
+type PageBlocksInformation {
+  image: String
+  subheading: String
+  items: [PageBlocksInformationItems]
+  mapimage: String
+}
+
 type PageBlocksFooter {
   content: String
 }
 
-union PageBlocks = PageBlocksHero | PageBlocksProjects | PageBlocksFeatures | PageBlocksFinancial | PageBlocksContact | PageBlocksFooter
+union PageBlocks = PageBlocksHero | PageBlocksProjects | PageBlocksFeatures | PageBlocksFinancial | PageBlocksContact | PageBlocksInformation | PageBlocksFooter
 
 type Page implements Node & Document {
   blocks: [PageBlocks]
@@ -149,13 +163,8 @@ type PageConnection implements Connection {
 
 type Post implements Node & Document {
   title: String
-  date: String
   image: String
-  author: String
-  category: [String]
-  tags: [String]
   description: String
-  body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -232,6 +241,20 @@ input PageBlocksContactMutation {
   heading: String
 }
 
+input PageBlocksInformationItemsMutation {
+  image: String
+  name: String
+  decscription: String
+  href: String
+}
+
+input PageBlocksInformationMutation {
+  image: String
+  subheading: String
+  items: [PageBlocksInformationItemsMutation]
+  mapimage: String
+}
+
 input PageBlocksFooterMutation {
   content: String
 }
@@ -242,6 +265,7 @@ input PageBlocksMutation {
   features: PageBlocksFeaturesMutation
   financial: PageBlocksFinancialMutation
   contact: PageBlocksContactMutation
+  information: PageBlocksInformationMutation
   footer: PageBlocksFooterMutation
 }
 
@@ -251,13 +275,8 @@ input PageMutation {
 
 input PostMutation {
   title: String
-  date: String
   image: String
-  author: String
-  category: [String]
-  tags: [String]
   description: String
-  body: JSON
 }
 
 schema {

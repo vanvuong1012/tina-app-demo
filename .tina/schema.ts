@@ -15,8 +15,7 @@ const heroBlock: TinaTemplate = {
       type: "string",
       label: "Sub Heading",
       name: "subheading"
-    },
-    
+    },  
     {
       type: "image",
       name: "image",
@@ -127,6 +126,7 @@ const financialBlock: TinaTemplate = {
       label: "Heading",
       name: "heading"
     },
+    
     {
       type: "object",
       label: "Content Items",
@@ -134,7 +134,7 @@ const financialBlock: TinaTemplate = {
       list: true,
       fields: [
         {
-          type: "string",
+          type: 'string',
           label: "Content",
           name: "content",
           ui: {
@@ -143,6 +143,9 @@ const financialBlock: TinaTemplate = {
         },
       ]
     },
+
+    
+
   ],
 };
 
@@ -157,6 +160,60 @@ const contactBlock: TinaTemplate = {
     },
   ],
 }
+
+const informationBlock: TinaTemplate = {
+  name: "information",
+  label: "Information Block",
+  fields: [
+    {
+      type: "image",
+      name: "image",
+      label: "Info Image",
+    },
+    {
+      type: "string",
+      label: "Sub Heading",
+      name: "subheading"
+    },  
+    {
+      type: "object",
+      label: "Project Items",
+      name: "items",
+      list: true,
+      fields: [
+        {
+          name: "image",
+          label: "Project Image",
+          type: "image"
+        },
+        {
+          name: "name",
+          label: "Content name",
+          type: "string"
+        },
+        {
+          type: "string",
+          label: "Decscription",
+          name: "decscription",
+          ui: {
+            component: "textarea",
+          },
+        },
+        {
+          name: "href",
+          label: "Link URL",
+          type: "string"
+        },
+      
+      ]
+    },
+    {
+      type: "image",
+      name: "mapimage",
+      label: "Map Image",
+    },
+  ],
+};
 
 const footerBlock: TinaTemplate = {
   name: "footer",
@@ -191,7 +248,7 @@ const schema = defineSchema({
           list: true,
           name: "blocks",
           label: "Section",
-          templates: [heroBlock, projectSection, featureSection, financialBlock, contactBlock, footerBlock],
+          templates: [heroBlock, projectSection, featureSection, financialBlock, contactBlock, informationBlock, footerBlock],
         },
       ],
     },
@@ -206,37 +263,14 @@ const schema = defineSchema({
           label: "Title",
           name: "title",
         },
-        {
-          type: "datetime",
-          label: "Publised Date",
-          name: "date"
-        },
+        
         {
           type: "image",
           label: "Cover Image",
           name: "image"
         },
-        {
-          type: "string",
-          label: "Author",
-          name: "author"
-        },
-        {
-          type: "string",
-          label: "Category",
-          name: "category",
-          options: ["tutorial", "throught", "productivity", "other"],
-          list: true
-        },
-        {
-          type: "string",
-          label: "Tags",
-          name: "tags",
-          list: true,
-          ui: {
-            component: "tags"
-          }
-        },
+        
+        
         {
           type: "string",
           label: "description",
@@ -245,25 +279,7 @@ const schema = defineSchema({
             component: "textarea"
           }
         },
-        {
-          type: "rich-text",
-          label: "Blog Post Body",
-          name: "body",
-          isBody: true,
-          templates: [
-            {
-              name: "youtube",
-              label: "Youtube Video",
-              fields:[
-                {
-                  type:"string",
-                  label:"Youtube Video URL",
-                  name:"url "
-                }
-              ]
-            }
-          ]
-        },
+        
       ],
     },
   ],

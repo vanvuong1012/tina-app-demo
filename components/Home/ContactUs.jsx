@@ -16,7 +16,7 @@ export const ContactUs = ({ data }) => {
     return (
         <Box
             as="section"
-            bgImage="url('https://static.vecteezy.com/system/resources/previews/004/493/179/non_2x/hospital-building-for-healthcare-background-illustration-with-ambulance-car-doctor-patient-nurses-and-medical-clinic-exterior-vector.jpg')"
+            bgImage="url('https://ik.imagekit.io/5xp2dtukdiubl/wp-content/uploads/2019/08/Corporate-Benh-Vien-Gia-An-8-1968x1000.jpg')"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
             pt={{ base: "0", md: "2", lg: "16" }}
@@ -38,7 +38,7 @@ export const ContactUs = ({ data }) => {
                             as="h1"
                             size="2xl"
                             mt="15vh"
-                            color={mode("gray.700")}
+                            color={mode("gray.900")}
                             textAlign="center"
                             fontWeight="extrabold"
                             
